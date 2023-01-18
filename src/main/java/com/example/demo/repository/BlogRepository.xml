@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.repository.BlogRepository">
+
+	<insert id="saveOne">
+    <![CDATA[
+        INSERT INTO blog
+        (
+           number
+          ,title
+          ,content
+        )        VALUES
+        (
+            #{number}
+           ,#{title}
+           ,#{content}
+        )
+    ]]>
+	</insert>
+
+	<select id="selectOne" resultType="Blog">
+    <![CDATA[
+        SELECT
+            *
+        FROM
+            blog
+        WHERE
+            number = #{number}
+    ]]>
+	</select>
+	
+	<select id="selectAll" resultType="Blog">
+    <![CDATA[
+        SELECT
+            *
+        FROM
+            blog
+    ]]>
+	</select>
+
+	<update id="updateOne">
+    <![CDATA[
+        UPDATE
+        	blog
+        SET
+        	content = #{content}
+        WHERE
+            id = #{id}
+    ]]>
+	</update>
+
+	<delete id="deleteOne">
+    <![CDATA[
+        delete
+            blog
+        WHERE
+            number = #{number}
+    ]]>
+	</delete>
+</mapper>   
